@@ -8,7 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
-
+.env
 # db
 db.sqlite3
 .DS_Store # Mac only

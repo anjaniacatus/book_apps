@@ -14,7 +14,6 @@ class CustomUserTests(TestCase):
             email="will@andalana.com",
             password="testpass123"
         )
-        self.assertEqual(user.username, "will")
         self.assertEqual(user.email, "will@andalana.com")
         self.assertTrue(user.is_active)
         self.assertFalse(user.is_staff)
@@ -27,17 +26,12 @@ class CustomUserTests(TestCase):
             email="superadmin@andalana.com",
             password="testPassword!"
         )
-        self.assertEqual(user.username, "superadmin")
         self.assertEqual(user.email, "superadmin@andalana.com")
         self.assertTrue(user.is_active)
         self.assertTrue(user.is_staff)
         self.assertTrue(user.is_superuser)
 
 class SignupPageTests(TestCase):
-    username = "kalanoro432"
-    email = "kalanoro@andalana.com"
-
-
     def setUp(self):
         url = reverse("account_signup")
         self.response = self.client.get(url)
@@ -57,4 +51,4 @@ class SignupPageTests(TestCase):
 
     def test_signup_view(self):
         view = resolve("/accounts/signup/")
-        self.assertEqual(view.func.__name__, CustomSignupView.as_view().__name__)
+        self.assertEqual(view.func.__name__, SignupPageView.as_view().__name__)
