@@ -19,8 +19,8 @@ class CustomSignupView(SignupView):
                 self.request, "please check you email to verify your account"
             )
         else:
-            message.success(
+            messages.success(
                 self.request,
-                f"Welcome {form.cleaned_date['first_name']}! Your account has been created"
+                f"Welcome {form.cleaned_data['first_name']}! Your account has been created"
             )
         return response
