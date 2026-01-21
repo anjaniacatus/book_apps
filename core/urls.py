@@ -24,6 +24,8 @@ urlpatterns = [
     # User management
     path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
     path('accounts/', include("allauth.urls")),
+    
     # local apps
     path('', include('pages.urls')),
+    path("books/", include("books.urls")),
 ]

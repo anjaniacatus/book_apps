@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     # local
     'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
+    "books.apps.BooksConfig",
+    #Third-party
     'widget_tweaks',
     'slippers',
 ]
