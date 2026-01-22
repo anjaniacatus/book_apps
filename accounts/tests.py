@@ -35,6 +35,9 @@ class SignupPageTests(TestCase):
     def setUp(self):
         url = reverse("account_signup")
         self.response = self.client.get(url)
+        self.username = "Rakoto"
+        self.email = "Rakot@test.com"
+        self.password = "Test456645"
 
     def test_signup_template(self):
         self.assertEqual(self.response.status_code, 200)
@@ -51,4 +54,4 @@ class SignupPageTests(TestCase):
 
     def test_signup_view(self):
         view = resolve("/accounts/signup/")
-        self.assertEqual(view.func.__name__, SignupPageView.as_view().__name__)
+        self.assertEqual(view.func.__name__, CustomSignupView.as_view().__name__)
