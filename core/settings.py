@@ -149,6 +149,8 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 # django-allauth config
 SITE_ID = 1
 AUTHENTICATION_BACKENDS = (
