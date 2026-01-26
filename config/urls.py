@@ -21,7 +21,7 @@ from django.urls import path, include
 from accounts.views import CustomSignupView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('kitchen/', admin.site.urls),
 
     # User management
     path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
