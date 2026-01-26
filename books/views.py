@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import ListView, DetailView
-from django.db.models import Q 
+from django.db.models import Q
 
 from  .models import Book
 
@@ -24,7 +24,6 @@ class SearchResultsListView(ListView):
     context_object_name = "book_list"
     template_name = "books/search_results.html"
 
-    
     def get_queryset(self):
         query = self.request.GET.get("q")
         return Book.objects.filter(
