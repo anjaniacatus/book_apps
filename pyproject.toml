@@ -11,6 +11,7 @@ dependencies = [
     "django-allauth>=65.13.1",
     "django-allauth-ui>=1.8.1",
     "django-crispy-forms>=2.5",
+    "django-debug-toolbar>=6.2.0",
     "environs>=14.5.0",
     "numpy>=2.4.1",
     "pillow>=12.1.0",
