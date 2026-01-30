@@ -11,6 +11,8 @@ services:
     runtime: python
     buildCommand: './build.sh'
     startCommand: 'python -m gunicorn config.asgi:application -k uvicorn.workers.UvicornWorker'
+    envGroups:
+      - groupName: catus_books_env
     envVars:
       - key: DATABASE_URL
         fromDatabase:
