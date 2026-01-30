@@ -13,7 +13,9 @@ services:
     startCommand: 'python -m gunicorn config.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: book_db_catus
+          property: connectionString 
       - key: DJANGO_SECRET_KEY
         sync: false
       - key: DJANGO_ALLOW_HOSTS
