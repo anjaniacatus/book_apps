@@ -12,3 +12,11 @@ SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
 CSRF_COOKIE_SECURE=env.bool("DJANGO_COOKIE_SECURE", default=True)
 SESSION_COOKIE_SECURE=env.bool("DJANGO_SESSION_COOKIE_SECURE", default=True)
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True  # Recommended for production
+    )
+}
