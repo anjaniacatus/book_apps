@@ -1,7 +1,7 @@
 [project]
-name = "learning-django"
+name = "book_apps"
 version = "0.1.0"
-description = "Django_for_profesional"
+description = "just_an_other_app"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
