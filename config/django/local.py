@@ -3,7 +3,6 @@ import os
 from .base import *  # noqa
 from config.env import env
 
-APPEND_SLASH = False
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=False)
 DATABASES = {
     "default": dj_database_url.config(

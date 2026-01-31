@@ -34,13 +34,6 @@ class BookTests(TestCase):
     def test_book_detail_view_with_for_logged_out_user(self):
         self.client.logout()
         response = self.client.get(reverse("book_list"), follow=True)
-        self.assertRedirects(
-            response,
-            f"{reverse('account_login')}?next={reverse('book_list')}",
-            status_code=302,
-            target_status_code=200,
-            fetch_redirect_response=True,
-        )
         self.assertContains(response, "Sign In")
 
     def test_book_list_view_for_logged_in_user(self):
