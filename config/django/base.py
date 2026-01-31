@@ -10,10 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
-from pathlib import Path
-import dj_database_url
 import os
-import socket
 
 # Environment variable management
 from config.env import BASE_DIR, env
