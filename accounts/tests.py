@@ -32,7 +32,7 @@ class CustomUserTests(TestCase):
 class SignupPageTests(TestCase):
     def setUp(self):
         url = reverse("account_signup")
-        self.response = self.client.get(url)
+        self.response = self.client.get(url, follow=True)
         self.username = "Rakoto"
         self.email = "Rakot@test.com"
         self.password = "Test456645"
