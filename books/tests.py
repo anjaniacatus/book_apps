@@ -5,6 +5,7 @@ from django.contrib.auth.models import Permission
 
 from .models import Book, Review
 
+
 class BookTests(TestCase):
 
     @classmethod
@@ -17,36 +18,26 @@ class BookTests(TestCase):
         cls.special_permission = Permission.objects.get(codename="special_status")
 
         cls.book = Book.objects.create(
-            title = "La force des discrets",
+            title="La force des discrets",
             author="Susan Cain",
             price="25.00",
         )
 
         cls.review = Review.objects.create(
-            book = cls.book,
-            author = cls.user,
-            review = "An excellent review"
+            book=cls.book, author=cls.user, review="An excellent review"
         )
-
-
 
     def test_book_listing(self):
         self.assertEqual(f"{self.book.title}", "La force des discrets")
         self.assertEqual(f"{self.book.author}", "Susan Cain")
         self.assertEqual(f"{self.book.price}", "25.00")
 
-
-
     def test_book_detail_view_with_for_logged_out_user(self):
         self.client.logout()
         response = self.client.get(reverse("book_list"))
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(
-            response, "%s?next=/books/" % (reverse("account_login"))
-        )
-        response = self.client.get(
-            "%s?next=/books/" %  (reverse("account_login"))
-        )
+        self.assertRedirects(response, "%s?next=/books/" % (reverse("account_login")))
+        response = self.client.get("%s?next=/books/" % (reverse("account_login")))
         self.assertContains(response, "Sign In")
 
     def test_book_list_view_for_logged_in_user(self):
@@ -55,7 +46,6 @@ class BookTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "La force des discrets")
         self.assertTemplateUsed(response, "books/book_list.html")
-
 
     def test_book_detail_view_with_permissions(self):
         self.client.login(email="reviewuser@email.com", password="testPass1234")
@@ -67,4 +57,3 @@ class BookTests(TestCase):
         self.assertContains(response, "La force des discrets")
         self.assertContains(response, "An excellent review")
         self.assertTemplateUsed(response, "books/book_detail.html")
-

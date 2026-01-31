@@ -10,9 +10,7 @@ class CustomUserTests(TestCase):
     def test_create_user(self):
         User = get_user_model()
         user = User.objects.create_user(
-            username="will",
-            email="will@andalana.com",
-            password="testpass123"
+            username="will", email="will@andalana.com", password="testpass123"
         )
         self.assertEqual(user.email, "will@andalana.com")
         self.assertTrue(user.is_active)
@@ -24,12 +22,13 @@ class CustomUserTests(TestCase):
         user = User.objects.create_superuser(
             username="superadmin",
             email="superadmin@andalana.com",
-            password="testPassword!"
+            password="testPassword!",
         )
         self.assertEqual(user.email, "superadmin@andalana.com")
         self.assertTrue(user.is_active)
         self.assertTrue(user.is_staff)
         self.assertTrue(user.is_superuser)
+
 
 class SignupPageTests(TestCase):
     def setUp(self):
@@ -44,7 +43,6 @@ class SignupPageTests(TestCase):
         self.assertTemplateUsed(self.response, "account/signup.html")
         self.assertContains(self.response, "Sign Up")
         self.assertNotContains(self.response, "Log Out")
-
 
     def test_signup_form(self):
         new_user = get_user_model().objects.create_user(self.username, self.email)
