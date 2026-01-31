@@ -7,7 +7,6 @@ from .models import Book, Review
 
 
 class BookTests(TestCase):
-
     @classmethod
     def setUpTestData(cls):
         cls.user = get_user_model().objects.create_user(
@@ -51,7 +50,7 @@ class BookTests(TestCase):
         self.client.login(email="reviewuser@email.com", password="testPass1234")
         self.user.user_permissions.add(self.special_permission)
         response = self.client.get(self.book.get_absolute_url())
-        no_response = self.client.get("/books/12345")
+        no_response = self.client.get("/books/12345" + "/")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(no_response.status_code, 404)
         self.assertContains(response, "La force des discrets")

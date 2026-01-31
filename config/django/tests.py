@@ -1,1 +1,3 @@
-from .base import * # noqa
+from .base import *  # noqa
+
+APPEND_SLASH = False
