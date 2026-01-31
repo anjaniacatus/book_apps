@@ -34,10 +34,14 @@ class BookTests(TestCase):
     def test_book_detail_view_with_for_logged_out_user(self):
         self.client.logout()
         response = self.client.get(reverse("book_list"), follow=True)
+
+        expected_url = f"{reverse('account_login')}?next={reverse('book_list')}"
+
         self.assertRedirects(
             response,
-            f"{reverse('account_login')}?next={reverse('book_list')}",
+            expected_url,
         )
+        self.assertContains(response, "Sign In")
 
     def test_book_list_view_for_logged_in_user(self):
         self.client.login(email="reviewuser@email.com", password="testPass1234")
