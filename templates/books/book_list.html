@@ -4,11 +4,14 @@
 
 {% block content %}
     {% for book in book_list %}
-        <div>
+        {% #card heading= {{ book.title  }}  %}
             <h2><a href="{{ book.get_absolute_url }}">
                 {{ book.title }}
             </a>
-        </h2>
-    </div>
-{% endfor %}
+            </h2>
+            {% if book.cover %}
+                <img class="bookcover" src={{ book.cover.url  }} alt={{ book.title  }}>
+            {% endif %}
+        {% /card %}
+    {% endfor %}
 {% endblock content %}
