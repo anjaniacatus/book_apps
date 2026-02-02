@@ -2,7 +2,6 @@ import os
 import dj_database_url
 from .base import *  # noqa
 from config.env import env
-from .settings.storage import *  # noqa
 
 
 SECRET_KEY = env("DJANGO_SECRET_KEY")

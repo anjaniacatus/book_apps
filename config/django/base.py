@@ -14,6 +14,7 @@ import os
 
 # Environment variable management
 from config.env import BASE_DIR, env
+from ..settings.storage import *  # noqa
 
 env.read_env(os.path.join(BASE_DIR, ".env"))
 

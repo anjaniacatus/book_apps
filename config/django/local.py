@@ -1,7 +1,6 @@
 import dj_database_url
 import os
 from .base import *  # noqa
-from .settings.storage import *  # noqa
 from config.env import env
 
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=False)
